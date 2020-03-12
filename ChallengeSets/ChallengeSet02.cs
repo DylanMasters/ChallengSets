@@ -8,95 +8,78 @@ namespace ChallengeSets
     {
         public bool CharacterIsALetter(char c)
         {
-            if (Char.IsLetter(c))
-            {
-                return true;
-            }return false;
+            return Char.IsLetter(c);
         }
 
         public bool CountOfElementsIsEven(string[] vals)
         {
-            if(vals.Length%2 == 0)
-            {
-                return true;
-            }return false;
+            return vals.Length % 2 == 0;
         }
 
         public bool IsNumberEven(int number)
         {
-            if (number%2 == 0)
-            {
-                return true;
-            }return false;
+            return number % 2 == 0;
         }
 
         public bool IsNumberOdd(int num)
         {
-           if(num%2 == 1)
-            {
-                return true;
-            }return false;
+            return num % 2 != 0;
         }
 
         public double SumOfMinAndMax(IEnumerable<double> numbers)
         {
-            double min = numbers.Min();
-            double max = numbers.Max();
-            return min * max;
+            if (numbers == null || numbers.Count() == 0)
+            {
+                return 0;
+            }
+            return numbers.Min() + numbers.Max();
         }
 
         public int GetLengthOfShortestString(string str1, string str2)
         {
-            if(str1.Length < str2.Length)
-            {
-                return str1.Length;
-            }return str2.Length;
+            return new int[] { str1.Length, str2.Length }.Min();
         }
 
         public int Sum(int[] numbers)
         {
-            int sum = 0;
-            if (numbers != null)
-            { 
-                sum = numbers.Sum(); 
-            }return sum;
+            if (numbers == null)
+            {
+                return 0;
+            }
+            return numbers.Sum();
         }
 
         public int SumEvens(int[] numbers)
         {
-            int sum = 0;
-            int min = 0;
-            int max = 0;
-            for(int i = 0; i < numbers.Length; i++)
+            if (numbers == null)
             {
-                if(numbers[i] <= min)
+                return 0;
+            }
+            int sum = 0;
+            foreach (int num in numbers)
+            {
+                if (num % 2 == 0)
                 {
-                    min = numbers[i];
+                    sum += num;
                 }
-                else if(numbers[i] >= max)
-                {
-                    max = numbers[i];
-                }
-                sum = min * max;
             }
             return sum;
+
         }
 
         public bool IsSumOdd(List<int> numbers)
         {
-            if(numbers.Sum()%2 == 1 && numbers != null)
+            if (numbers == null)
             {
-                return true;
-            }return false;
-        }
+                return false;
+            }
+            return numbers.Sum() % 2 != 0 || numbers.Sum() == -1;
+        }   
 
         public long CountOfPositiveOddsBelowNumber(long number)
         {
-            int count = 0;
-            if(number%2 == 1)
-            {
-                count++;
-            }return count;
+            if (number > 0) { return number % 2 == 0 ? number / 2 : (number - 1) / 2; }
+            return 0;
         }
     }
 }

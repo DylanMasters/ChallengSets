@@ -1,46 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 namespace ChallengeSets
 {
     public class ChallengeSet01
     {
         public bool AreTwoNumbersTheSame(int num1, int num2)
         {
-            if (num1 == num2)
-            {
-                return true;
-            }
-            return false;
+            return num1 == num2;
         }
 
         public double Subtract(double minuend, double subtrahend)
         {
-            double sum = minuend - subtrahend;
-            return sum;
+            return minuend - subtrahend; 
         }
 
         public int Add(int number1, int number2)
         {
-            int sum = number1 + number2;
-            return sum;
+            return new int[] { number1, number2 }.Sum();
         }
 
         public int GetSmallestNumber(int number1, int number2)
         {
-            if (number1 < number2)
-            {
-                return number1;
-            }
-            else
-            {
-                return number2;
-            }
+            return new int[] { number1, number2 }.Min();
         }
 
         public long Multiply(long factor1, long factor2)
         {
-            long sum = factor1 * factor2;
-            return sum;
+            return factor1 * factor2;
         }
 
         public string GetGreeting(string nameOfPerson)

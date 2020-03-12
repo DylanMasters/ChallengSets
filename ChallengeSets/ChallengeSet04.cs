@@ -1,36 +1,42 @@
 ﻿using System;
+using System.Linq;
 namespace ChallengeSets
 {
     public class ChallengeSet04
     {
         public int AddEvenSubtractOdd(int[] numbers)
         {
-            throw new NotImplementedException();
+            return numbers.Select(i => (i % 2 == 0 ? i : -i)).Sum();
         }
 
         public int GetLengthOfShortestString(string str1, string str2, string str3, string str4)
         {
-            throw new NotImplementedException();
+           return new string[] { str1, str2, str3, str4 }.Select(s => s.Length).Min();
         }
 
         public int GetSmallestNumber(int number1, int number2, int number3, int number4)
         {
-            throw new NotImplementedException();
+            return new int[] { number1, number2, number3, number4 }.Min();
         }
 
         public void ChangeBusinessNameTo_TrueCoders(Business biz)
         {
-            throw new NotImplementedException();
+            biz.Name = "TrueCoders";
         }
 
         public bool CouldFormTriangle(int sideLength1, int sideLength2, int sideLength3)
         {
-            throw new NotImplementedException();
+            return !(sideLength1 + sideLength2 <= sideLength3 || sideLength1 + sideLength3 <= sideLength2 || sideLength2 + sideLength3 <= sideLength1);
         }
 
         public bool IsStringANumber(string input)
         {
-            throw new NotImplementedException();
+            if (input == null)
+            {
+                return false;
+            }
+            double number;
+            return double.TryParse(input, out number);
         }
 
         public bool MajorityOfElementsInArrayAreNull(object[] objs)
@@ -40,12 +46,35 @@ namespace ChallengeSets
 
         public double AverageEvens(int[] numbers)
         {
-            throw new NotImplementedException();
+            int AvgEvens = 0;
+            int count = 0;
+            foreach (int num in numbers)
+            {
+                if (num % 2 == 0)
+                {
+                    AvgEvens += num;
+                    count++;
+                }
+            }
+            double finalAVG = AvgEvens / count;
+            return finalAVG;
         }
 
         public int Factorial(int number)
         {
-            throw new NotImplementedException();
+            int test = number;
+            int fact = 1;
+            if (test >= 0)
+            {
+                for (int i = 1; i <= number; i++)
+                {
+                    fact = fact * i;
+                }
+                return fact;
+                
+            }
+            throw new ArgumentOutOfRangeException();
+
         }
     }
 }
